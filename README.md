@@ -8,7 +8,9 @@ It deliberately runs on GitHub, not on the netcup box, so it stays reachable whe
 
 - `docs/` is the page, served by GitHub Pages at status.n3rdlabs.dev (`docs/CNAME`; DNS is a `status` CNAME to `freecreeper.github.io` at Namecheap).
 - `docs/services.json` lists each project and the URLs that must answer for it to count as up. Lodge and Brewbook also check their backend health endpoints, so "page loads but backend is dead" shows as **partly down**.
-- `.github/workflows/check.yml` runs `scripts/check.mjs` every 5 minutes (GitHub sometimes runs late). A failed request is retried once after 5 s before it counts.
+- `.github/workflows/check.yml` runs `scripts/check.mjs`. A failed request is retried once after 5 s before it counts.
+- **What starts it:** cron-job.org (job "n3rdlabs status check", Zane's account) POSTs to the workflow's `dispatches` API every 5 minutes with a fine-grained token that can only run Actions in this repo. GitHub's own `*/5` schedule is still in the workflow as a backup, but it never fired after setup on 2026-10-22, so don't rely on it alone. Pushes to `services.json`, `maintenance.json` or the checker also run a check.
+- **When the token expires** (about a year after 2026-10-22), cron-job.org emails after 3 failed runs and the page starts showing "may be out of date". Make a new fine-grained token (only this repo, Actions: read and write) and paste `Bearer <token>` into the job's Authorization header.
 - Results go to the `data` branch (`status.json`, `history.json`), which is replaced by a single commit each run so it never grows. The page reads them from raw.githubusercontent.com and refreshes every minute.
 - Downtime during an announced window is recorded as a planned update, not an outage.
 
