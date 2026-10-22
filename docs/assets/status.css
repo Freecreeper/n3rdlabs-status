@@ -66,6 +66,11 @@ a {
   color: inherit;
 }
 
+/* Brand rule: the 3 in n3rdlabs is always amber. */
+.three {
+  color: var(--amber);
+}
+
 :focus-visible {
   outline: 2px solid var(--up);
   outline-offset: 3px;

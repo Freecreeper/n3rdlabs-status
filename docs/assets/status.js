@@ -26,6 +26,13 @@ function el(tag, attrs = {}, ...children) {
   return node;
 }
 
+// Brand rule: the 3 in "n3rdlabs" is always amber, so names and sentences go through this.
+function brand(text) {
+  return String(text).split(/(n3rdlabs)/).map((part) =>
+    part === "n3rdlabs" ? [document.createTextNode("n"), el("span", { class: "three" }, "3"), document.createTextNode("rdlabs")] : part,
+  ).flat();
+}
+
 const dateTime = new Intl.DateTimeFormat(undefined, { weekday: "short", month: "short", day: "numeric", hour: "numeric", minute: "2-digit" });
 const timeOnly = new Intl.DateTimeFormat(undefined, { hour: "numeric", minute: "2-digit", timeZoneName: "short" });
 const dayLabel = new Intl.DateTimeFormat(undefined, { month: "short", day: "numeric", timeZone: "UTC" });
@@ -69,7 +76,7 @@ function renderSummary(now) {
 
   if (!state.status) {
     box.classList.add(state.error ? "is-error" : "is-loading");
-    title.textContent = state.error ? "Couldn't load live checks" : "Checking everything";
+    title.replaceChildren(state.error ? "Couldn't load live checks" : "Checking everything");
     sub.textContent = state.error
       ? "The status data didn't load. The projects themselves may be fine; this page retries every minute."
       : "Loading the latest results.";
@@ -84,25 +91,25 @@ function renderSummary(now) {
 
   if (down.length) {
     box.classList.add("is-down");
-    title.textContent = down.length === 1 ? `${down[0]} is down` : "Some projects are down";
-    sub.textContent = `${listNames(down)} ${down.length === 1 ? "isn't" : "aren't"} responding. It's being looked at.`;
+    title.replaceChildren(...brand(down.length === 1 ? `${down[0]} is down` : "Some projects are down"));
+    sub.replaceChildren(...brand(`${listNames(down)} ${down.length === 1 ? "isn't" : "aren't"} responding. It's being looked at.`));
   } else if (partial.length) {
     box.classList.add("is-partial");
-    title.textContent = partial.length === 1 ? `${partial[0]} is partly down` : "Some projects are partly down";
-    sub.textContent = `${listNames(partial)} ${partial.length === 1 ? "loads, but part of it isn't" : "load, but parts aren't"} responding.`;
+    title.replaceChildren(...brand(partial.length === 1 ? `${partial[0]} is partly down` : "Some projects are partly down"));
+    sub.replaceChildren(...brand(`${listNames(partial)} ${partial.length === 1 ? "loads, but part of it isn't" : "load, but parts aren't"} responding.`));
   } else if (updating.length) {
     box.classList.add("is-maint");
     const m = updating[0];
-    title.textContent = "Planned update in progress";
-    sub.textContent = `${listNames(serviceNames(m.services))}: ${m.title}. Expected back by ${when(new Date(m.end))}.`;
+    title.replaceChildren(...brand("Planned update in progress"));
+    sub.replaceChildren(...brand(`${listNames(serviceNames(m.services))}: ${m.title}. Expected back by ${when(new Date(m.end))}.`));
   } else {
     box.classList.add("is-up");
-    title.textContent = "Everything's up";
-    sub.textContent = `All ${state.services.length} projects responded on the last check.`;
+    title.replaceChildren(...brand("Everything's up"));
+    sub.replaceChildren(...brand(`All ${state.services.length} projects responded on the last check.`));
   }
 
   const age = now - new Date(state.status.checkedAt);
-  if (age > STALE_AFTER_MS) sub.textContent += ` Heads up: the last check was ${relative(age)} ago, so this may be out of date.`;
+  if (age > STALE_AFTER_MS) sub.append(` Heads up: the last check was ${relative(age)} ago, so this may be out of date.`);
 }
 
 function maintenanceCard(m, now) {
@@ -126,9 +133,9 @@ function maintenanceCard(m, now) {
   return el("article", { class: `plan plan-${phase}` },
     el("div", { class: "plan-top" },
       el("span", { class: `chip ${chip[1]}` }, chip[0]),
-      el("h3", { class: "plan-title" }, m.title),
+      el("h3", { class: "plan-title" }, brand(m.title)),
     ),
-    el("p", { class: "plan-affects" }, `Affects ${listNames(serviceNames(m.services))}`),
+    el("p", { class: "plan-affects" }, brand(`Affects ${listNames(serviceNames(m.services))}`)),
     el("p", { class: "plan-time" }, timing),
     m.details ? el("p", { class: "plan-details" }, m.details) : null,
   );
@@ -206,7 +213,7 @@ function serviceRow(svc, now) {
 
   return el("article", { class: `svc state-${current}` },
     el("div", { class: "svc-main" },
-      el("a", { class: "svc-name", href: svc.link }, svc.name),
+      el("a", { class: "svc-name", href: svc.link }, brand(svc.name)),
       el("span", { class: "svc-about" }, svc.about),
     ),
     el("div", { class: "svc-bars", role: "img", "aria-label": `${svc.name}: ${text} up over the last ${HISTORY_DAYS} days` }, cells),
