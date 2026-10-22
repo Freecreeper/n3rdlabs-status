@@ -1,8 +1,10 @@
 // Renders status.n3rdlabs.dev. Project list and planned updates ship with the page (services.json,
 // maintenance.json); live results come from the `data` branch, which GitHub Actions rewrites every
-// few minutes. A same-origin ?data=/path/ override exists for local previews only.
+// few minutes; the page reads the newest commit of that branch. A same-origin ?data=/path/ override
+// exists for local previews only.
 
 const REMOTE_DATA = "https://raw.githubusercontent.com/Freecreeper/n3rdlabs-status/data/";
+const DATA_REF_API = "https://api.github.com/repos/Freecreeper/n3rdlabs-status/git/ref/heads/data";
 const override = new URLSearchParams(location.search).get("data");
 const DATA_BASE = override && override.startsWith("/") && !override.startsWith("//") ? override : REMOTE_DATA;
 const HISTORY_DAYS = 90;
@@ -259,10 +261,23 @@ async function loadConfig() {
   state.maintenance = maintenance.maintenance;
 }
 
+// raw.githubusercontent.com caches a branch URL for 5 minutes and ignores query strings, so look up the
+// data branch's newest commit and read that exact version. The unauthenticated API allows 60 calls an
+// hour per visitor; if that runs out, the branch URL is at most ~5 minutes behind.
+async function currentDataBase() {
+  if (DATA_BASE !== REMOTE_DATA) return DATA_BASE;
+  try {
+    const ref = await getJson(DATA_REF_API);
+    return `https://raw.githubusercontent.com/Freecreeper/n3rdlabs-status/${ref.object.sha}/`;
+  } catch {
+    return REMOTE_DATA;
+  }
+}
+
 async function loadResults() {
   try {
-    const bust = `?t=${Date.now()}`;
-    const [status, history] = await Promise.all([getJson(`${DATA_BASE}status.json${bust}`), getJson(`${DATA_BASE}history.json${bust}`)]);
+    const base = await currentDataBase();
+    const [status, history] = await Promise.all([getJson(`${base}status.json`), getJson(`${base}history.json`)]);
     state.status = status;
     state.history = history;
     state.error = false;
@@ -282,7 +297,8 @@ try {
   state.error = true;
 }
 await refresh();
-setInterval(refresh, 60 * 1000);
+// Every 2 minutes keeps a visitor at 30 API calls an hour; checks only land every 5 anyway.
+setInterval(refresh, 2 * 60 * 1000);
 setInterval(render, 30 * 1000);
 document.addEventListener("visibilitychange", () => {
   if (!document.hidden) refresh();

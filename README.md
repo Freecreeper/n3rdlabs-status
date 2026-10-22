@@ -11,7 +11,7 @@ It deliberately runs on GitHub, not on the netcup box, so it stays reachable whe
 - `.github/workflows/check.yml` runs `scripts/check.mjs`. A failed request is retried once after 5 s before it counts.
 - **What starts it:** cron-job.org (job "n3rdlabs status check", Zane's account) POSTs to the workflow's `dispatches` API every 5 minutes with a fine-grained token that can only run Actions in this repo. GitHub's own `*/5` schedule is still in the workflow as a backup, but it never fired after setup on 2026-10-22, so don't rely on it alone. Pushes to `services.json`, `maintenance.json` or the checker also run a check.
 - **When the token expires** (about a year after 2026-10-22), cron-job.org emails after 3 failed runs and the page starts showing "may be out of date". Make a new fine-grained token (only this repo, Actions: read and write) and paste `Bearer <token>` into the job's Authorization header.
-- Results go to the `data` branch (`status.json`, `history.json`), which is replaced by a single commit each run so it never grows. The page reads them from raw.githubusercontent.com and refreshes every minute.
+- Results go to the `data` branch (`status.json`, `history.json`), which is replaced by a single commit each run so it never grows. The page looks up the newest `data` commit through the GitHub API and reads that exact version from raw.githubusercontent.com (the branch URL is CDN-cached for 5 minutes), refreshing every 2 minutes.
 - Downtime during an announced window is recorded as a planned update, not an outage.
 
 ## Posting a planned update
