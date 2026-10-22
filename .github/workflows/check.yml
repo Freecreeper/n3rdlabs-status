@@ -1,0 +1,59 @@
+name: Check services
+
+# Every 5 minutes (GitHub sometimes runs scheduled jobs late), plus right away when the service list,
+# the planned updates, or the checker change. Results go to the `data` branch, which is replaced by a
+# single fresh commit each run so it never grows.
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+    - cron: "17 3 * * 1"
+  push:
+    branches: [main]
+    paths: [docs/services.json, docs/maintenance.json, scripts/check.mjs]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: check
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Load previous results
+        run: |
+          mkdir -p prev
+          if git fetch --quiet --depth=1 origin data; then
+            git show FETCH_HEAD:status.json > prev/status.json || true
+            git show FETCH_HEAD:history.json > prev/history.json || true
+          fi
+
+      - name: Check every service
+        run: node scripts/check.mjs prev out
+
+      - name: Publish results to the data branch
+        working-directory: out
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git init --quiet --initial-branch=data
+          git config user.name "n3rdlabs-status"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add status.json history.json
+          git commit --quiet -m "Status at $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          git push --quiet --force "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" data
+
+      # GitHub pauses scheduled workflows in repos with no activity for 60 days; re-enabling weekly
+      # resets that clock without adding commits.
+      - name: Keep the schedule alive
+        if: github.event.schedule == '17 3 * * 1'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api --method PUT "repos/${GITHUB_REPOSITORY}/actions/workflows/check.yml/enable"

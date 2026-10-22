@@ -1,0 +1,66 @@
+{
+  "services": [
+    {
+      "id": "lodge",
+      "name": "Lodge",
+      "group": "Apps",
+      "about": "Private video rooms",
+      "link": "https://lodge.king56bob.com",
+      "checks": [
+        { "label": "app", "url": "https://lodge.king56bob.com/" },
+        { "label": "backend", "url": "https://lodge.king56bob.com/health" }
+      ]
+    },
+    {
+      "id": "the-button",
+      "name": "The Button",
+      "group": "Apps",
+      "about": "One button, one global count",
+      "link": "https://pressthebutton.click",
+      "checks": [{ "label": "app", "url": "https://pressthebutton.click/" }]
+    },
+    {
+      "id": "scoreboard",
+      "name": "Scoreboard",
+      "group": "Apps",
+      "about": "Math-free game night scoring",
+      "link": "https://score.king56bob.com",
+      "checks": [{ "label": "app", "url": "https://score.king56bob.com/" }]
+    },
+    {
+      "id": "brewbook",
+      "name": "Brewbook",
+      "group": "Apps",
+      "about": "Shared coffee recipe book",
+      "link": "https://brewbook.king56bob.com",
+      "checks": [
+        { "label": "app", "url": "https://brewbook.king56bob.com/" },
+        { "label": "backend", "url": "https://brewbook.king56bob.com/api/healthz" }
+      ]
+    },
+    {
+      "id": "nerdnav",
+      "name": "NerdNav",
+      "group": "Apps",
+      "about": "Tech pilgrimage app (info page)",
+      "link": "https://nerdnav.king56bob.com",
+      "checks": [{ "label": "page", "url": "https://nerdnav.king56bob.com/" }]
+    },
+    {
+      "id": "king56bob",
+      "name": "king56bob.com",
+      "group": "Websites",
+      "about": "Personal site",
+      "link": "https://king56bob.com",
+      "checks": [{ "label": "site", "url": "https://king56bob.com/" }]
+    },
+    {
+      "id": "n3rdlabs",
+      "name": "n3rdlabs.dev",
+      "group": "Websites",
+      "about": "Studio site",
+      "link": "https://n3rdlabs.dev",
+      "checks": [{ "label": "site", "url": "https://n3rdlabs.dev/" }]
+    }
+  ]
+}

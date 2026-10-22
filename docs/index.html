@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>n3rdlabs status</title>
+  <meta name="description" content="Live status and planned updates for Lodge, king56bob.com and every other n3rdlabs project.">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'self' https://raw.githubusercontent.com; img-src 'self' data:; style-src 'self'; script-src 'self'; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta name="theme-color" content="#0e100f">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <link rel="preload" href="/assets/fonts/Geist-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/GeistMono-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/status.css">
+  <script src="/assets/status.js" type="module"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="topbar wrap">
+    <a class="brand" href="https://n3rdlabs.dev">
+      <img class="mark" src="/assets/brand/mark.svg" width="28" height="38" alt="">
+      <img class="wordmark" src="/assets/brand/wordmark.png" width="437" height="66" alt="n3rdlabs">
+      <span class="brand-tag">status</span>
+    </a>
+    <a class="back" href="https://n3rdlabs.dev">n3rdlabs.dev
+      <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11l6-6M6 5h5v5"/></svg>
+    </a>
+  </header>
+
+  <main id="main" class="wrap">
+    <section class="summary is-loading" aria-live="polite" aria-labelledby="summary-title">
+      <span class="summary-light" aria-hidden="true"></span>
+      <div>
+        <h1 id="summary-title">Checking everything</h1>
+        <p id="summary-sub" class="summary-sub">Loading the latest results.</p>
+      </div>
+    </section>
+
+    <section class="block" aria-labelledby="planned-title">
+      <div class="block-head">
+        <h2 id="planned-title">Planned updates</h2>
+        <p class="block-note">Times are shown in your time zone.</p>
+      </div>
+      <div id="planned" class="planned">
+        <div class="skeleton skeleton-card"></div>
+      </div>
+    </section>
+
+    <section class="block" aria-labelledby="projects-title">
+      <div class="block-head">
+        <h2 id="projects-title">Projects</h2>
+        <p class="block-note"><span class="legend legend-up"></span>up <span class="legend legend-partial"></span>partly down <span class="legend legend-down"></span>down <span class="legend legend-maint"></span>planned update</p>
+      </div>
+      <div id="groups">
+        <div class="skeleton skeleton-row"></div>
+        <div class="skeleton skeleton-row"></div>
+        <div class="skeleton skeleton-row"></div>
+      </div>
+    </section>
+
+    <section class="block" aria-labelledby="past-title" id="past-block" hidden>
+      <div class="block-head">
+        <h2 id="past-title">Recent updates</h2>
+      </div>
+      <div id="past" class="planned"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <span>Checked every 5 minutes from GitHub, away from the servers it watches.</span>
+      <span>Last check: <time id="checked-at">–</time></span>
+    </div>
+  </footer>
+</body>
+</html>
