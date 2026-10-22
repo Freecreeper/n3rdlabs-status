@@ -1,6 +1,6 @@
 name: Check services
 
-# Every 5 minutes (GitHub sometimes runs scheduled jobs late), plus right away when the service list,
+# Every 5 minutes (GitHub runs scheduled jobs late under load, sometimes much later), plus right away when the service list,
 # the planned updates, or the checker change. Results go to the `data` branch, which is replaced by a
 # single fresh commit each run so it never grows.
 on:

@@ -6,7 +6,7 @@ const REMOTE_DATA = "https://raw.githubusercontent.com/Freecreeper/n3rdlabs-stat
 const override = new URLSearchParams(location.search).get("data");
 const DATA_BASE = override && override.startsWith("/") && !override.startsWith("//") ? override : REMOTE_DATA;
 const HISTORY_DAYS = 90;
-const STALE_AFTER_MS = 20 * 60 * 1000;
+const STALE_AFTER_MS = 30 * 60 * 1000;
 const PAST_WINDOW_MS = 14 * 24 * 60 * 60 * 1000;
 
 const STATE_LABEL = { up: "Up", degraded: "Partly down", down: "Down", maintenance: "Updating", unknown: "No data" };
