@@ -65,6 +65,16 @@
       "end": "2026-10-23T17:10:00-04:00",
       "details": "Deploying an update: you can walk into a Lodge and chat without giving it your camera or mic, and turn them on when you want to talk. Lodge restarts; calls drop and reconnect on their own.",
       "finishedAt": "2026-10-23T17:06:25-04:00"
+    },
+    {
+      "id": "2026-10-24-lodge-pr-69",
+      "title": "Lodge update",
+      "services": [
+        "lodge"
+      ],
+      "start": "2026-10-24T00:30:00-04:00",
+      "end": "2026-10-24T00:40:00-04:00",
+      "details": "Deploying an update: buttons at the bottom of the screen stay clear of Android's navigation bar. Lodge restarts; calls drop and reconnect on their own."
     }
   ]
 }
