@@ -74,7 +74,8 @@
       ],
       "start": "2026-10-24T00:30:00-04:00",
       "end": "2026-10-24T00:40:00-04:00",
-      "details": "Deploying an update: buttons at the bottom of the screen stay clear of Android's navigation bar. Lodge restarts; calls drop and reconnect on their own."
+      "details": "Deploying an update: buttons at the bottom of the screen stay clear of Android's navigation bar. Lodge restarts; calls drop and reconnect on their own.",
+      "finishedAt": "2026-10-24T00:36:15-04:00"
     }
   ]
 }
