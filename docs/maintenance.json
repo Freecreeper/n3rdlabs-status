@@ -107,7 +107,8 @@
       ],
       "start": "2026-10-25T19:30:00-04:00",
       "end": "2026-10-25T19:40:00-04:00",
-      "details": "Deploying an update: a redesigned Room view that fits everyone on a phone screen. Lodge restarts; calls drop and reconnect on their own."
+      "details": "Deploying an update: a redesigned Room view that fits everyone on a phone screen. Lodge restarts; calls drop and reconnect on their own.",
+      "finishedAt": "2026-10-25T19:36:00-04:00"
     }
   ]
 }
