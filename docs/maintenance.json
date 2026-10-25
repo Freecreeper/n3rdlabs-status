@@ -98,6 +98,16 @@
       "end": "2026-10-24T10:40:00-04:00",
       "details": "Deploying an update: Lodge stops buzzing your phone about updates in the middle of the night. Lodge restarts; calls drop and reconnect on their own.",
       "finishedAt": "2026-10-24T10:36:24-04:00"
+    },
+    {
+      "id": "2026-10-25-lodge-pr-72",
+      "title": "Lodge update",
+      "services": [
+        "lodge"
+      ],
+      "start": "2026-10-25T19:30:00-04:00",
+      "end": "2026-10-25T19:40:00-04:00",
+      "details": "Deploying an update: a redesigned Room view that fits everyone on a phone screen. Lodge restarts; calls drop and reconnect on their own."
     }
   ]
 }
