@@ -120,6 +120,16 @@
       "end": "2026-10-26T01:30:00-04:00",
       "details": "Deploying an update: Room themes, with wallpapers, floorings, new couches and after-dark looks in Decorate. Lodge restarts; calls drop and reconnect on their own.",
       "finishedAt": "2026-10-26T01:25:10-04:00"
+    },
+    {
+      "id": "2026-10-26-lodge-pr-77",
+      "title": "Lodge update",
+      "services": [
+        "lodge"
+      ],
+      "start": "2026-10-26T11:10:00-04:00",
+      "end": "2026-10-26T11:20:00-04:00",
+      "details": "Deploying an update: crash reports now survive restarts, so they're easier to track down and fix. Lodge restarts; calls drop and reconnect on their own."
     }
   ]
 }
