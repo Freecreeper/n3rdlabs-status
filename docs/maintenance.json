@@ -131,6 +131,16 @@
       "end": "2026-10-26T11:50:00-04:00",
       "details": "Deploying an update: crash reports now survive restarts, so they're easier to track down and fix. Lodge restarts; calls drop and reconnect on their own.",
       "finishedAt": "2026-10-26T11:48:38-04:00"
+    },
+    {
+      "id": "2026-10-26-lodge-pr-78",
+      "title": "Lodge update",
+      "services": [
+        "lodge"
+      ],
+      "start": "2026-10-26T20:10:00-04:00",
+      "end": "2026-10-26T20:20:00-04:00",
+      "details": "Deploying an update: a new Look around beta, where tilting your phone lets you peek into the Room like a dollhouse. Lodge restarts; calls drop and reconnect on their own."
     }
   ]
 }
