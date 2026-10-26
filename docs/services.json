@@ -5,10 +5,11 @@
       "name": "Lodge",
       "group": "Apps",
       "about": "Private video rooms",
-      "link": "https://lodge.king56bob.com",
+      "link": "https://lodge.n3rdlabs.dev",
       "checks": [
-        { "label": "app", "url": "https://lodge.king56bob.com/" },
-        { "label": "backend", "url": "https://lodge.king56bob.com/health" }
+        { "label": "app", "url": "https://lodge.n3rdlabs.dev/" },
+        { "label": "backend", "url": "https://lodge.n3rdlabs.dev/health" },
+        { "label": "old address", "url": "https://lodge.king56bob.com/health" }
       ]
     },
     {
