@@ -164,6 +164,16 @@
       "end": "2026-10-27T15:45:00-04:00",
       "details": "Postponed: the update didn't go out in this window and nothing restarted. A new time will be posted.",
       "finishedAt": "2026-10-27T15:45:00-04:00"
+    },
+    {
+      "id": "2026-10-27-lodge-pr-79-1650",
+      "title": "Lodge update",
+      "services": [
+        "lodge"
+      ],
+      "start": "2026-10-27T16:50:00-04:00",
+      "end": "2026-10-27T17:05:00-04:00",
+      "details": "Deploying an update: steadier calls (your video stays up through a connection blip, and faces show up sooner), an \"On my way\" button on lit Lodges, and Settings in the porch look. Lodge restarts; calls drop and reconnect on their own."
     }
   ]
 }
