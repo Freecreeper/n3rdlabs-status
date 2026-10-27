@@ -140,7 +140,8 @@
       ],
       "start": "2026-10-26T20:10:00-04:00",
       "end": "2026-10-26T20:20:00-04:00",
-      "details": "Deploying an update: a new Look around beta, where tilting your phone lets you peek into the Room like a dollhouse. Lodge restarts; calls drop and reconnect on their own."
+      "details": "Postponed: a GitHub hiccup held this update back, so Lodge never restarted. A new time will be posted here.",
+      "finishedAt": "2026-10-26T20:21:00-04:00"
     }
   ]
 }
