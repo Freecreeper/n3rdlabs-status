@@ -1,0 +1,104 @@
+{
+ "checkedAt": "2026-10-31T12:50:10.162Z",
+ "services": {
+  "the-button": {
+   "state": "up",
+   "ms": 304,
+   "checks": [
+    {
+     "label": "app",
+     "ok": true,
+     "code": 200
+    }
+   ],
+   "since": "2026-10-22T19:08:26.709Z"
+  },
+  "scoreboard": {
+   "state": "up",
+   "ms": 345,
+   "checks": [
+    {
+     "label": "app",
+     "ok": true,
+     "code": 200
+    }
+   ],
+   "since": "2026-10-26T11:10:10.005Z"
+  },
+  "lodge": {
+   "state": "up",
+   "ms": 535,
+   "checks": [
+    {
+     "label": "app",
+     "ok": true,
+     "code": 200
+    },
+    {
+     "label": "backend",
+     "ok": true,
+     "code": 200
+    },
+    {
+     "label": "old address",
+     "ok": true,
+     "code": 200
+    }
+   ],
+   "since": "2026-10-22T19:08:26.709Z"
+  },
+  "king56bob": {
+   "state": "up",
+   "ms": 402,
+   "checks": [
+    {
+     "label": "site",
+     "ok": true,
+     "code": 200
+    }
+   ],
+   "since": "2026-10-22T19:08:26.709Z"
+  },
+  "brewbook": {
+   "state": "up",
+   "ms": 402,
+   "checks": [
+    {
+     "label": "app",
+     "ok": true,
+     "code": 200
+    },
+    {
+     "label": "backend",
+     "ok": true,
+     "code": 200
+    }
+   ],
+   "since": "2026-10-22T19:08:26.709Z"
+  },
+  "nerdnav": {
+   "state": "up",
+   "ms": 420,
+   "checks": [
+    {
+     "label": "page",
+     "ok": true,
+     "code": 200
+    }
+   ],
+   "since": "2026-10-22T19:08:26.709Z"
+  },
+  "n3rdlabs": {
+   "state": "up",
+   "ms": 475,
+   "checks": [
+    {
+     "label": "site",
+     "ok": true,
+     "code": 200
+    }
+   ],
+   "since": "2026-10-22T19:08:26.709Z"
+  }
+ }
+}
