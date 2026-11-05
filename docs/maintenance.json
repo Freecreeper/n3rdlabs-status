@@ -206,7 +206,8 @@
       ],
       "start": "2026-11-05T13:50:00-05:00",
       "end": "2026-11-05T14:00:00-05:00",
-      "details": "Deploying an update: sign in with Google, Apple and more. Lodge restarts; calls drop and reconnect on their own."
+      "details": "Deploying an update: sign in with Google, Apple and more. Lodge restarts; calls drop and reconnect on their own.",
+      "finishedAt": "2026-11-05T14:00:20-05:00"
     }
   ]
 }
