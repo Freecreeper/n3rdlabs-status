@@ -228,7 +228,8 @@
       ],
       "start": "2026-11-09T00:10:00-05:00",
       "end": "2026-11-09T00:20:00-05:00",
-      "details": "Turning on sign in with Google, Apple and GitHub. Lodge restarts; calls drop and reconnect on their own."
+      "details": "Turning on sign in with Google, Apple and GitHub. Lodge restarts; calls drop and reconnect on their own.",
+      "finishedAt": "2026-11-09T00:10:22-05:00"
     }
   ]
 }
