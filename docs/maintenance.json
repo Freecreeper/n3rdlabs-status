@@ -230,6 +230,16 @@
       "end": "2026-11-09T00:20:00-05:00",
       "details": "Turning on sign in with Google, Apple and GitHub. Lodge restarts; calls drop and reconnect on their own.",
       "finishedAt": "2026-11-09T00:10:22-05:00"
+    },
+    {
+      "id": "2026-11-11-lodge-pr-85-1820",
+      "title": "Lodge update",
+      "services": [
+        "lodge"
+      ],
+      "start": "2026-11-11T18:20:00-05:00",
+      "end": "2026-11-11T18:30:00-05:00",
+      "details": "Deploying an update: easier invites and a way for guests to keep their spot. Lodge restarts; calls drop and reconnect on their own."
     }
   ]
 }
