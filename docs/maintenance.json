@@ -239,7 +239,8 @@
       ],
       "start": "2026-11-11T18:20:00-05:00",
       "end": "2026-11-11T18:30:00-05:00",
-      "details": "Deploying an update: easier invites and a way for guests to keep their spot. Lodge restarts; calls drop and reconnect on their own."
+      "details": "Deploying an update: easier invites and a way for guests to keep their spot. Lodge restarts; calls drop and reconnect on their own.",
+      "finishedAt": "2026-11-11T18:26:14-05:00"
     }
   ]
 }
